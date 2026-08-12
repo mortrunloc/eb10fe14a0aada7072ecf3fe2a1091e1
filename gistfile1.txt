@@ -1039,17 +1039,39 @@ function Update-ProcessChangeMonitor {
 }
 
 $script:ExternalReaderAllowlist = @(
+    # Roblox + launchers (keep these hidden)
     'robloxplayerbeta', 'robloxcrashhandler', 'robloxplayerlauncher',
-    'bloxstrap', 'fishstrap', 'lunarstrap',
+    'bloxstrap', 'fishstrap', 'lunarstrap', 'voidstrap', 'froststrap',
+
+    # System / Defender
     'msmpeng', 'nissrv', 'securityhealthservice', 'mpdefendercoreservice',
     'csrss', 'lsass', 'wininit', 'services', 'searchindexer', 'wmiprvse',
-    'powershell', 'pwsh', 'explorer'
+    'powershell', 'pwsh', 'explorer', 'svchost',
+
+    # Medal
+    'medal', 'medalencoder', 'medalhelper', 'medaloverlay',
+
+    # Nahimic / audio
+    'nahimic', 'nahimicservice', 'nahimic3', 'nahimicsvc64', 'nahimicsvc32',
+    'audiodg', 'realtimeaudioservice', 'wavesys32', 'wavesys64',
+    'sonicstudio', 'asusaudio', 'realtekaudio',
+
+    # NVIDIA / overlays that commonly false-positive
+    'nvcontainer', 'nvidia share', 'nvidia web helper', 'nvsphelper64',
+    'nvidia geforce experience', 'nvidiaoverlay'
 )
 
 $script:CaptureWindowAllowlist = @(
     'logonui', 'consent', 'dwm', 'textinputhost', 'screenclippinghost',
     'snippingtool', 'searchhost', 'startmenuexperiencehost',
-    'applicationframehost', 'systemsettings', 'shellexperiencehost'
+    'applicationframehost', 'systemsettings', 'shellexperiencehost',
+
+    # NVIDIA
+    'nvcontainer', 'nvidia share', 'nvidia web helper', 'nvsphelper64',
+    'nvidiaoverlay', 'nvidia geforce experience',
+
+    # Medal / audio that sometimes set affinity
+    'medal', 'medalencoder', 'nahimic', 'nahimicsvc64'
 )
 
 function Initialize-ExternalScanApi {
